@@ -13,6 +13,7 @@ class Fighter : Hero {
     override init(name: String, player: Player) {
         super.init(name: name, player: player)
         super.life = 100
+        super.maxLife = 100
         super.stuff = 10
         super.race = "Combattant"
     }

@@ -12,6 +12,7 @@ class Hero {
     var name: String
     var player: Player
     var life: Int
+    var maxLife: Int
     var stuff: Int
     var race: String
     
@@ -19,6 +20,7 @@ class Hero {
         self.player = player
         self.name = name
         self.life = 0
+        self.maxLife = 0
         self.stuff = 0
         self.race = ""
     }
@@ -70,17 +72,27 @@ class Hero {
                     }
                 }
             }
-        } else if self.race == "Mage" { // Heal
+        }  else if self.race == "Mage" { // Heal
             print("Qui va tu soigner ?")
             var i = 1
             for hero in self.player.teamMate {
-                print("\(i): \(hero.name) le \(hero.race) il possède \(hero.life) point de vie")
+                print("\(i): \(hero.name) le \(hero.race) il possède \(hero.life) point de vie sur \(hero.maxLife)")
                 i += 1
             }
             if let choice = readLine() {
                 if let hero = Int(choice) {
                     if hero <= self.player.teamMate.count {
-                        self.player.teamMate[hero - 1].life += self.stuff
+                        // condition to know if we sould heal him, but his life at maxLife or if is already full life
+                        if self.player.teamMate[hero - 1].life + self.stuff <= self.player.teamMate[hero - 1].maxLife {
+                            self.player.teamMate[hero - 1].life += self.stuff
+                            print("\nVous avez soignée \(player.teamMate[hero - 1].name)(\(player.teamMate[hero - 1].life) points de vie)")
+                        } else if self.player.teamMate[hero - 1].life == self.player.teamMate[hero - 1].maxLife {
+                            print("\(self.player.teamMate[hero - 1].name) est déjà full vie")
+                            attak()
+                        } else {
+                            self.player.teamMate[hero - 1].life = self.player.teamMate[hero - 1].maxLife
+                            print("\nVous avez soignée \(player.teamMate[hero - 1].name)(\(player.teamMate[hero - 1].life) points de vie, full life ;))")
+                        }
                     } else {
                         print("Hum hum tu devais écrire un chiffre ex: 1")
                         attak()

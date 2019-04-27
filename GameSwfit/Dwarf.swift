@@ -14,6 +14,7 @@ class Dwarf : Hero {
     override init(name: String, player: Player) {
         super.init(name: name, player: player)
         super.life = 60
+        super.maxLife = 60
         super.stuff = 25
         super.race = "Nain"
     }

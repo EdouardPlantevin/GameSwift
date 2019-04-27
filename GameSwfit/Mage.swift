@@ -13,6 +13,7 @@ class Mage : Hero {
     override init(name: String, player: Player) {
         super.init(name: name, player: player)
         super.life = 50
+        super.maxLife = 50
         super.stuff = 10
         super.race = "Mage"
     }
