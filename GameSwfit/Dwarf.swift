@@ -17,6 +17,7 @@ class Dwarf : Hero {
         super.maxLife = 60
         super.stuff = 25
         super.race = "Nain"
+        super.weapons = ["tomawok" : 20, "Hachette" : 25, "Hache de guerre" : 30]
     }
     
 }

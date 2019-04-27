@@ -16,6 +16,7 @@ class Mage : Hero {
         super.maxLife = 50
         super.stuff = 10
         super.race = "Mage"
+        super.weapons = ["Bâton" : 10, "Sceptre" : 15, "Grimoire" : 20]
     }
     
 }

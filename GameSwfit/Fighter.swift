@@ -16,6 +16,6 @@ class Fighter : Hero {
         super.maxLife = 10
         super.stuff = 10
         super.race = "Combattant"
+        super.weapons = ["Epée à une main" : 15, "Cimeterre" : 20, "Epée à deux main" : 25]
     }
-    
 }
