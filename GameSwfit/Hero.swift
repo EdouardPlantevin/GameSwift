@@ -17,6 +17,7 @@ class Hero {
     var race: String
     var weapons: [String:Int]
     var activeWeapon: [String:Int]
+    var isHealer: Bool
     
     init(name: String, player: Player) {
         self.player = player
@@ -27,6 +28,7 @@ class Hero {
         self.race = ""
         self.weapons = [:]
         self.activeWeapon = [:]
+        self.isHealer = false
     }
     
     
@@ -62,10 +64,10 @@ class Hero {
             let weaponStuff = Array(weapons)[index].value
             // add actif weapon
             self.activeWeapon[weaponName] = weaponStuff
-            print("\(self.name) est actuellement équipe de: \(self.activeWeapon.first!.key) qui inflige \(self.activeWeapon.first!.value)\n")
+            print("\(self.name) est actuellement équipe de:  \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value)\n")
             attak()
         } else {
-            print("\(self.name) est actuellement équipe de: \(self.activeWeapon.first!.key) qui inflige \(self.activeWeapon.first!.value)\n")
+            print("\(self.name) est actuellement équipe de:  \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value)\n")
             print("Souhaite tu changer d'arme ?\n1: Oui\n2: Non")
             
             if let choice = readLine() {
@@ -79,12 +81,8 @@ class Hero {
                     // add actif weapon
                     self.activeWeapon[weaponName] = weaponStuff
                     
-                    // If != mage make domag if == mage heal
-                    if self.name != "Mage" {
-                        print("\(self.name) est actuellement équipe de:  \(self.activeWeapon.first!.key) qui inflige \(self.activeWeapon.first!.value)\n")
-                    } else {
-                        print("\(self.name) est actuellement équipe de:  \(self.activeWeapon.first!.key) qui rend \(self.activeWeapon.first!.value) points de vie\n")
-                    }
+                    // Info stuff
+                    print("\(self.name) est actuellement équipe de:  \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value)\n")
 
                     attak()
                 case "2":
@@ -103,21 +101,35 @@ class Hero {
     
     
     func attak() {
-        if self.race != "Mage" { // ------- ATTAK -------
-            print("Qui va tu attaquer ?\n")
+    // ------- ATTAK -------
+        print((isHealer ? "Qui va tu soigné ?"  : "Qui va tu attaquer ?") + "\n")
             var i = 1
-            for hero in self.player.enemyPlayer!.teamMate { // List hero's enemy
-                print("\(i): \(hero.name) le \(hero.race) il possède \(hero.life) points de vie")
+        for hero in (isHealer ? self.player.teamMate : self.player.enemyPlayer!.teamMate) { // List hero's enemy
+            print("\(i): \(hero.name) le \(hero.race) il possède \(hero.life) points de vie " + (isHealer ? "sur \(hero.life)" : ""))
                 i += 1
             }
             if let choice = readLine() {
                 if let hero = Int(choice) {
-                    if hero <= self.player.enemyPlayer!.teamMate.count && hero != 0 {
-                        self.player.enemyPlayer!.teamMate[hero - 1].life -= self.stuff + self.activeWeapon.first!.value
-                        print("Vous avez enlever \(self.stuff + self.activeWeapon.first!.value) points de dégats à \(self.player.enemyPlayer!.teamMate[hero - 1].name)")
-                        if self.player.enemyPlayer!.teamMate[hero - 1].life <= 0 {
-                            print("\(self.player.enemyPlayer!.teamMate[hero - 1].name) est mort\n")
-                            self.player.enemyPlayer!.teamMate.remove(at: hero - 1)
+                    if hero <= (isHealer ? self.player.teamMate.count : self.player.enemyPlayer!.teamMate.count) && hero != 0 {
+                        if isHealer {
+                            // condition to know if we sould heal him, but his life at maxLife or if is already full life
+                            if self.player.teamMate[hero - 1].life + self.stuff + self.activeWeapon.first!.value <= self.player.teamMate[hero - 1].maxLife {
+                                self.player.teamMate[hero - 1].life += self.stuff + self.activeWeapon.first!.value
+                                print("\nVous avez soignée \(player.teamMate[hero - 1].name)(\(player.teamMate[hero - 1].life) points de vie)")
+                            } else if self.player.teamMate[hero - 1].life == self.player.teamMate[hero - 1].maxLife {
+                                print("\(self.player.teamMate[hero - 1].name) est déjà full vie")
+                                attak()
+                            } else {
+                                self.player.teamMate[hero - 1].life = self.player.teamMate[hero - 1].maxLife
+                                print("\nVous avez soignée \(player.teamMate[hero - 1].name)(\(player.teamMate[hero - 1].life) points de vie, full life ;))")
+                            }
+                        } else {
+                            self.player.enemyPlayer!.teamMate[hero - 1].life -= self.stuff + self.activeWeapon.first!.value
+                            print("Vous avez enlever \(self.stuff + self.activeWeapon.first!.value) points de dégats à \(self.player.enemyPlayer!.teamMate[hero - 1].name)")
+                            if self.player.enemyPlayer!.teamMate[hero - 1].life <= 0 {
+                                print("\(self.player.enemyPlayer!.teamMate[hero - 1].name) est mort\n")
+                                self.player.enemyPlayer!.teamMate.remove(at: hero - 1)
+                            }
                         }
                     } else {
                         print("Hum hum tu devais écrire un chiffre valide ex: 1)\n")
@@ -128,37 +140,6 @@ class Hero {
                     attak()
                 }
             }
-        }  else if self.race == "Mage" { // ------ HEAL ------
-            print("Qui va tu soigner ?")
-            var i = 1
-            for hero in self.player.teamMate {
-                print("\(i): \(hero.name) le \(hero.race) il possède \(hero.life) point de vie sur \(hero.maxLife)")
-                i += 1
-            }
-            if let choice = readLine() {
-                if let hero = Int(choice) {
-                    if hero <= self.player.teamMate.count {
-                        // condition to know if we sould heal him, but his life at maxLife or if is already full life
-                        if self.player.teamMate[hero - 1].life + self.stuff + self.activeWeapon.first!.value <= self.player.teamMate[hero - 1].maxLife {
-                            self.player.teamMate[hero - 1].life += self.stuff + self.activeWeapon.first!.value
-                            print("\nVous avez soignée \(player.teamMate[hero - 1].name)(\(player.teamMate[hero - 1].life) points de vie)")
-                        } else if self.player.teamMate[hero - 1].life == self.player.teamMate[hero - 1].maxLife {
-                            print("\(self.player.teamMate[hero - 1].name) est déjà full vie")
-                            attak()
-                        } else {
-                            self.player.teamMate[hero - 1].life = self.player.teamMate[hero - 1].maxLife
-                            print("\nVous avez soignée \(player.teamMate[hero - 1].name)(\(player.teamMate[hero - 1].life) points de vie, full life ;))")
-                        }
-                    } else {
-                        print("Hum hum tu devais écrire un chiffre valide ex: 1")
-                        attak()
-                    }
-                } else {
-                    print("Hum hum tu devais écrire un chiffre ex: 1")
-                    attak()
-                }
-            }
-        }
         self.player.keepOn()
     }
     
