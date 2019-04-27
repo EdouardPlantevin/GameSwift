@@ -68,7 +68,7 @@ class Hero {
             attak()
         } else {
             print("\(self.name) est actuellement équipe de:  \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value)\n")
-            print("Souhaite tu changer d'arme ?\n1: Oui\n2: Non")
+            print("Souhaite tu changer d'arme ?\n1: Oui\n2: Non\n")
             
             if let choice = readLine() {
                 switch choice {
@@ -108,6 +108,7 @@ class Hero {
             print("\(i): \(hero.name) le \(hero.race) il possède \(hero.life) points de vie " + (isHealer ? "sur \(hero.life)" : ""))
                 i += 1
             }
+            print("\(i): Changer de personnage")
             if let choice = readLine() {
                 if let hero = Int(choice) {
                     if hero <= (isHealer ? self.player.teamMate.count : self.player.enemyPlayer!.teamMate.count) && hero != 0 {
@@ -125,14 +126,16 @@ class Hero {
                             }
                         } else {
                             self.player.enemyPlayer!.teamMate[hero - 1].life -= self.stuff + self.activeWeapon.first!.value
-                            print("Vous avez enlever \(self.stuff + self.activeWeapon.first!.value) points de dégats à \(self.player.enemyPlayer!.teamMate[hero - 1].name)")
+                            print("\nVous avez enlever \(self.stuff + self.activeWeapon.first!.value) points de dégats à \(self.player.enemyPlayer!.teamMate[hero - 1].name)")
                             if self.player.enemyPlayer!.teamMate[hero - 1].life <= 0 {
-                                print("\(self.player.enemyPlayer!.teamMate[hero - 1].name) est mort\n")
+                                print("\(self.player.enemyPlayer!.teamMate[hero - 1].name) est mort")
                                 self.player.enemyPlayer!.teamMate.remove(at: hero - 1)
                             }
                         }
+                    } else if hero == (isHealer ? self.player.teamMate.count + 1 : self.player.enemyPlayer!.teamMate.count + 1) {
+                        choiceHero()
                     } else {
-                        print("Hum hum tu devais écrire un chiffre valide ex: 1)\n")
+                        print("Hum hum tu devais écrire un chiffre ex: 1\n")
                         attak()
                     }
                 } else {
