@@ -22,7 +22,7 @@ class Player {
             print("\nJoueur 2 approche et dis moi ton nom:\n")
         }
         if let playerName = readLine() {
-            if playerName != "" {
+            if playerName != "" && playerName.count < 30 {
                 if arrayNames.contains(playerName) {
                     print("\nLe méchant joueur 1 à déjà pris vôtre nom !\n")
                     getPlayerName()
@@ -31,7 +31,7 @@ class Player {
                     arrayNames.append(playerName)
                 }
             } else {
-                print("\nTu dois écrire un nom valide, ex: Satan")
+                print("\nTu dois écrire un nom valide, ex: Satan qui contient moins de 30 caractères")
                 getPlayerName()
             }
         }
@@ -101,4 +101,12 @@ class Player {
             }
         }
     }
+    
+    func keepOn() {
+        if self.enemyPlayer!.teamMate.count == 0 {
+            print("Bien joué, \(self.name) à gagner")
+            exit(0)
+        }
+    }
+    
 }

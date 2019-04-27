@@ -39,11 +39,15 @@ class Hero {
         }
         if let choice = readLine() {
             if let hero = Int(choice) {
-                if hero <= self.player.teamMate.count || hero != 0 {
+                if hero <= self.player.teamMate.count && hero != 0 {
                     self.player.teamMate[hero - 1].attak()
+                } else {
+                    print("Je n'ai pas compris")
+                    choiceHero()
                 }
             } else {
                 print("Je n'ai pas compris\n")
+                choiceHero()
             }
         }
     }
@@ -59,7 +63,7 @@ class Hero {
             }
             if let choice = readLine() {
                 if let hero = Int(choice) {
-                    if hero <= self.player.enemyPlayer!.teamMate.count || hero != 0 {
+                    if hero <= self.player.enemyPlayer!.teamMate.count && hero != 0 {
                         self.player.enemyPlayer!.teamMate[hero - 1].life -= self.stuff
                         print("Vous avez enlever \(self.stuff) points de dégats à \(self.player.enemyPlayer!.teamMate[hero - 1].name)")
                         if self.player.enemyPlayer!.teamMate[hero - 1].life <= 0 {
@@ -67,9 +71,12 @@ class Hero {
                             self.player.enemyPlayer!.teamMate.remove(at: hero - 1)
                         }
                     } else {
-                        print("Hum hum tu devais écrire un chiffre ex: 1\n")
+                        print("Hum hum tu devais écrire un chiffre valide ex: 1)\n")
                         attak()
                     }
+                } else {
+                    print("Hum hum tu devais écrire un chiffre ex: 1\n")
+                    attak()
                 }
             }
         }  else if self.race == "Mage" { // Heal
@@ -94,12 +101,16 @@ class Hero {
                             print("\nVous avez soignée \(player.teamMate[hero - 1].name)(\(player.teamMate[hero - 1].life) points de vie, full life ;))")
                         }
                     } else {
-                        print("Hum hum tu devais écrire un chiffre ex: 1")
+                        print("Hum hum tu devais écrire un chiffre valide ex: 1")
                         attak()
                     }
+                } else {
+                    print("Hum hum tu devais écrire un chiffre ex: 1")
+                    attak()
                 }
             }
         }
+        self.player.keepOn()
     }
     
 }

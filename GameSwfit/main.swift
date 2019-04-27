@@ -33,9 +33,7 @@ player2.createTeam(player: player2)
 // Lunch game
 while 1 == 1 {
     player1.teamMate[0].choiceHero()
-    keepOn()
     player2.teamMate[0].choiceHero()
-    keepOn()
 }
 
 
