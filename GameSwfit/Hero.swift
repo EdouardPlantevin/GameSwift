@@ -112,29 +112,35 @@ class Hero {
             }
             print("\(i): Changer de personnage")
             if let choice = readLine() {
-                if let hero = Int(choice) {
-                    if hero <= (isHealer ? self.player.teamMate.count : self.player.enemyPlayer!.teamMate.count) && hero != 0 {
+                if let index = Int(choice) {
+                    if index <= (isHealer ? self.player.teamMate.count : self.player.enemyPlayer!.teamMate.count) && index != 0 {
                         if isHealer {
+                            // var containt hero to heal
+                            let heroSelect = self.player.teamMate[index - 1]
                             // condition to know if we sould heal him or if is already full life
-                            if self.player.teamMate[hero - 1].life + self.activeWeapon.first!.value <= self.player.teamMate[hero - 1].maxLife {
-                                self.player.teamMate[hero - 1].life += self.activeWeapon.first!.value
-                                print("\nVous avez soignée \(player.teamMate[hero - 1].name)(\(player.teamMate[hero - 1].life) points de vie)")
-                            } else if self.player.teamMate[hero - 1].life == self.player.teamMate[hero - 1].maxLife {
-                                print("\(self.player.teamMate[hero - 1].name) est déjà full vie")
+                            if heroSelect.life + self.activeWeapon.first!.value <= heroSelect.maxLife {
+                                heroSelect.life += self.activeWeapon.first!.value
+                                print("\nVous avez soignée \(heroSelect.name)(\(heroSelect.life) points de vie)")
+                            } else if heroSelect.life == heroSelect.maxLife {
+                                print("\(heroSelect.name) est déjà full vie")
                                 attak()
                             } else {
-                                self.player.teamMate[hero - 1].life = self.player.teamMate[hero - 1].maxLife
-                                print("\nVous avez soignée \(player.teamMate[hero - 1].name)(\(player.teamMate[hero - 1].life) points de vie, full life ;))")
+                                heroSelect.life = heroSelect.maxLife
+                                print("\nVous avez soignée \(heroSelect.name)(\(heroSelect.life) points de vie, full life ;))")
                             }
                         } else {
-                            self.player.enemyPlayer!.teamMate[hero - 1].life -= self.activeWeapon.first!.value
-                            print("\nVous avez enlever \(self.activeWeapon.first!.value) points de dégats à \(self.player.enemyPlayer!.teamMate[hero - 1].name)")
-                            if self.player.enemyPlayer!.teamMate[hero - 1].life <= 0 {
-                                print("\(self.player.enemyPlayer!.teamMate[hero - 1].name) est mort")
-                                self.player.enemyPlayer!.teamMate.remove(at: hero - 1)
+                            // var containt hero to attak
+                            let heroEnemySelect = self.player.enemyPlayer!.teamMate[index - 1]
+                            heroEnemySelect.life -= self.activeWeapon.first!.value
+                            print("\nVous avez enlever \(self.activeWeapon.first!.value) points de dégats à \(heroEnemySelect.name)")
+                            // If hero enemy are dead he leave the game
+                            if heroEnemySelect.life <= 0 {
+                                print("\(heroEnemySelect.name) est mort")
+                                // delete hero from the game
+                                 self.player.enemyPlayer!.teamMate.remove(at: index - 1)
                             }
                         }
-                    } else if hero == (isHealer ? self.player.teamMate.count + 1 : self.player.enemyPlayer!.teamMate.count + 1) {
+                    } else if index == (isHealer ? self.player.teamMate.count + 1 : self.player.enemyPlayer!.teamMate.count + 1) {
                         choiceHero()
                     } else {
                         print("Hum hum tu devais écrire un chiffre ex: 1\n")
