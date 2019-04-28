@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Mage can heal his teammate
+
 class Mage : Hero {
     
     override init(name: String, player: Player) {

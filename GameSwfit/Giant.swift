@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Giant can tank
+
 class Giant : Hero {
     
     override init(name: String, player: Player) {

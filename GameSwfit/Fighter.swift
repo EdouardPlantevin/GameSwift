@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Classic fighter
+
 class Fighter : Hero {
     
     override init(name: String, player: Player) {

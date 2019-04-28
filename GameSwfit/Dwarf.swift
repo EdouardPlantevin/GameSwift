@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Do a lot of damage
 
 class Dwarf : Hero {
     
