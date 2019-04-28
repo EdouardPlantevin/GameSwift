@@ -9,14 +9,14 @@
 import Foundation
 
 class Hero {
-    var name: String
-    var player: Player
-    var life: Int
+    var name: String // Hero's name
+    var player: Player // Hero's player
+    var life: Int // Hero's life
     var maxLife: Int // healer can not heal more than maxLife
-    var race: String
+    var race: String // Mage, Giant, Fighter or Dwarf
     var weapons: [String:Int] // Dict contains all the weapons of a race
     var activeWeapon: [String:Int] // Dict contains only one weapon
-    var isHealer: Bool
+    var isHealer: Bool // Know if hero make domage or heal || default false
     
     init(name: String, player: Player) {
         self.player = player
@@ -34,6 +34,7 @@ class Hero {
     /* ------- Choose which hero will fight/heal ------- */
     func choiceHero() {
         print("\n\(self.player.name) avec qui souhaite tu jouer ?\n")
+        // Show hero's team mate
         var i = 1
         for hero in self.player.teamMate {
             print("\(i): \(hero.name) le \(hero.race)")
@@ -64,12 +65,13 @@ class Hero {
         // If Ramdom == 1 Hero can choose an other weapon
         if appears == 1 {
             print("Un coffre apparaît\n")
+            // Info on active weapon
             print("\(self.name) est actuellement équipe de: \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value) points de " + (isHealer ? "vie" : "degat") + "\n")
             print("Souhaite tu changer d'arme ?\n1: Oui\n2: Non\n")
             
             if let choice = readLine() {
                 switch choice {
-                case "1":
+                case "1": // Change weapon
                     self.activeWeapon = [:]
                     print("\n\(self.name) ouvre un coffre\n")
                     let index = Int.random(in: 0 ..< 3)
@@ -82,7 +84,7 @@ class Hero {
                     print("\(self.name) est actuellement équipe de: \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value)\n")
                     
                     attak()
-                case "2":
+                case "2": // Don't change weapon
                     print("\nBien à l'attaque alors\n")
                     attak()
                 default:
@@ -91,6 +93,7 @@ class Hero {
                 }
             }
         } else {
+            // Info on active weapon
             print("\(self.name) est actuellement équipe de: \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value) points de " + (isHealer ? "vie" : "degat") + "\n")
             attak()
         }
@@ -102,8 +105,9 @@ class Hero {
     func attak() {
         print((isHealer ? "Qui va tu soigné ?"  : "Qui va tu attaquer ?") + "\n")
             var i = 1
-        for hero in (isHealer ? self.player.teamMate : self.player.enemyPlayer!.teamMate) { // List hero's enemy
-            print("\(i): \(hero.name) le \(hero.race) il possède \(hero.life) points de vie " + (isHealer ? "sur \(hero.life)" : ""))
+            // Show each team mate(heal) or each enemy team mate(attak)
+            for hero in (isHealer ? self.player.teamMate : self.player.enemyPlayer!.teamMate) { // List hero's enemy
+                print("\(i): \(hero.name) le \(hero.race) il possède \(hero.life) points de vie " + (isHealer ? "sur \(hero.life)" : ""))
                 i += 1
             }
             print("\(i): Changer de personnage")
@@ -111,7 +115,7 @@ class Hero {
                 if let hero = Int(choice) {
                     if hero <= (isHealer ? self.player.teamMate.count : self.player.enemyPlayer!.teamMate.count) && hero != 0 {
                         if isHealer {
-                            // condition to know if we sould heal him, but his life at maxLife or if is already full life
+                            // condition to know if we sould heal him or if is already full life
                             if self.player.teamMate[hero - 1].life + self.activeWeapon.first!.value <= self.player.teamMate[hero - 1].maxLife {
                                 self.player.teamMate[hero - 1].life += self.activeWeapon.first!.value
                                 print("\nVous avez soignée \(player.teamMate[hero - 1].name)(\(player.teamMate[hero - 1].life) points de vie)")
@@ -141,6 +145,7 @@ class Hero {
                     attak()
                 }
             }
+        // Should continue game ?
         self.player.keepOn()
     }
 }
