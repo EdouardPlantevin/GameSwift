@@ -66,10 +66,10 @@ class Hero {
             let weaponStuff = Array(weapons)[index].value
             // add actif weapon
             self.activeWeapon[weaponName] = weaponStuff
-            print("\(self.name) est actuellement équipe de:  \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value)\n")
+            print("\(self.name) est actuellement équipe de: \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value)\n")
             attak()
         } else { // Hero's weapon info
-            print("\(self.name) est actuellement équipe de:  \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value) points de " + (isHealer ? "vie" : "degat") +"\n")
+            print("\(self.name) est actuellement équipe de: \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value) points de " + (isHealer ? "vie" : "degat") + "\n")
             print("Souhaite tu changer d'arme ?\n1: Oui\n2: Non\n")
             
             if let choice = readLine() {
@@ -84,7 +84,7 @@ class Hero {
                     self.activeWeapon[weaponName] = weaponStuff
                     
                     // Info stuff
-                    print("\(self.name) est actuellement équipe de:  \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value)\n")
+                    print("\(self.name) est actuellement équipe de: \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value)\n")
 
                     attak()
                 case "2":

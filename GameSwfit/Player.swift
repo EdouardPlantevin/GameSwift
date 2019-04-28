@@ -110,8 +110,10 @@ class Player {
     // If a player no longer has a hero ... this is the end
     func keepOn() {
         if self.enemyPlayer!.teamMate.count == 0 {
-            print("Bien joué, \(self.name) à gagner")
+            print("Bien joué, \(self.name) à gagner en \(counter) tours")
             exit(0)
+        } else {
+            print("\nTours: \(counter)\n")
         }
     }
     
