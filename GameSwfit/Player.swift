@@ -112,8 +112,6 @@ class Player {
         if self.enemyPlayer!.teamMate.count == 0 {
             print("Bien joué, \(self.name) à gagner en \(counter) tours")
             exit(0)
-        } else {
-            print("\nTours: \(counter)\n")
         }
     }
     

@@ -59,16 +59,13 @@ class Hero {
     /* ----------- Choice a weapon ---------- */
     
     func choiceWeapon() {
-        if self.activeWeapon == [:] { // If hero doesn't have any weapon
-            print("\n\(self.name) ouvre un coffre\n")
-            let index = Int.random(in: 0 ..< 3)
-            let weaponName = Array(weapons)[index].key
-            let weaponStuff = Array(weapons)[index].value
-            // add actif weapon
-            self.activeWeapon[weaponName] = weaponStuff
-            print("\(self.name) est actuellement équipe de: \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value)\n")
-            attak()
-        } else { // Hero's weapon info
+        
+        // Random Int to know if a weapon chest appears
+        let appears = Int.random(in: 1..<5)
+        
+        // If Ramdom == 1 Hero can choose an other weapon
+        if appears == 1 {
+            print("Un coffre apparaît\n")
             print("\(self.name) est actuellement équipe de: \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value) points de " + (isHealer ? "vie" : "degat") + "\n")
             print("Souhaite tu changer d'arme ?\n1: Oui\n2: Non\n")
             
@@ -85,7 +82,7 @@ class Hero {
                     
                     // Info stuff
                     print("\(self.name) est actuellement équipe de: \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value)\n")
-
+                    
                     attak()
                 case "2":
                     print("\nBien à l'attaque alors\n")
@@ -95,6 +92,9 @@ class Hero {
                     choiceWeapon()
                 }
             }
+        } else {
+            print("\(self.name) est actuellement équipe de: \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value) points de " + (isHealer ? "vie" : "degat") + "\n")
+            attak()
         }
     }
     

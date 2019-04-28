@@ -17,5 +17,6 @@ class Fighter : Hero {
         super.stuff = 10
         super.race = "Combattant"
         super.weapons = ["Epée à une main" : 15, "Cimeterre" : 20, "Epée à deux main" : 25]
+        super.activeWeapon = ["Epée à une main" : 15]
     }
 }

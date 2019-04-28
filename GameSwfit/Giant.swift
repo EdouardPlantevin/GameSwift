@@ -17,6 +17,7 @@ class Giant : Hero {
         super.stuff = 5
         super.race = "Colosse"
         super.weapons = ["Ecu" : 5, "Gants" : 10, "Massue" : 15]
+        super.activeWeapon = ["Ecu" : 5]
     }
     
 }
