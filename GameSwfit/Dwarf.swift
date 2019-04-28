@@ -15,7 +15,6 @@ class Dwarf : Hero {
         super.init(name: name, player: player)
         super.life = 60
         super.maxLife = 60
-        super.stuff = 25
         super.race = "Nain"
         super.weapons = ["Tomawok" : 20, "Hachette" : 25, "Hache de guerre" : 30]
         super.activeWeapon = ["Tomawok" : 20]

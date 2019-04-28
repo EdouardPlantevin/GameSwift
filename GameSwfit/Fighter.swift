@@ -14,7 +14,6 @@ class Fighter : Hero {
         super.init(name: name, player: player)
         super.life = 10
         super.maxLife = 10
-        super.stuff = 10
         super.race = "Combattant"
         super.weapons = ["Epée à une main" : 15, "Cimeterre" : 20, "Epée à deux main" : 25]
         super.activeWeapon = ["Epée à une main" : 15]

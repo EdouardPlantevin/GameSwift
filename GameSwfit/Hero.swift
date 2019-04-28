@@ -13,7 +13,6 @@ class Hero {
     var player: Player
     var life: Int
     var maxLife: Int // healer can not heal more than maxLife
-    var stuff: Int
     var race: String
     var weapons: [String:Int] // Dict contains all the weapons of a race
     var activeWeapon: [String:Int] // Dict contains only one weapon
@@ -24,7 +23,6 @@ class Hero {
         self.name = name
         self.life = 0
         self.maxLife = 0
-        self.stuff = 0
         self.race = ""
         self.weapons = [:]
         self.activeWeapon = [:]
@@ -114,8 +112,8 @@ class Hero {
                     if hero <= (isHealer ? self.player.teamMate.count : self.player.enemyPlayer!.teamMate.count) && hero != 0 {
                         if isHealer {
                             // condition to know if we sould heal him, but his life at maxLife or if is already full life
-                            if self.player.teamMate[hero - 1].life + self.stuff + self.activeWeapon.first!.value <= self.player.teamMate[hero - 1].maxLife {
-                                self.player.teamMate[hero - 1].life += self.stuff + self.activeWeapon.first!.value
+                            if self.player.teamMate[hero - 1].life + self.activeWeapon.first!.value <= self.player.teamMate[hero - 1].maxLife {
+                                self.player.teamMate[hero - 1].life += self.activeWeapon.first!.value
                                 print("\nVous avez soignée \(player.teamMate[hero - 1].name)(\(player.teamMate[hero - 1].life) points de vie)")
                             } else if self.player.teamMate[hero - 1].life == self.player.teamMate[hero - 1].maxLife {
                                 print("\(self.player.teamMate[hero - 1].name) est déjà full vie")
@@ -125,8 +123,8 @@ class Hero {
                                 print("\nVous avez soignée \(player.teamMate[hero - 1].name)(\(player.teamMate[hero - 1].life) points de vie, full life ;))")
                             }
                         } else {
-                            self.player.enemyPlayer!.teamMate[hero - 1].life -= self.stuff + self.activeWeapon.first!.value
-                            print("\nVous avez enlever \(self.stuff + self.activeWeapon.first!.value) points de dégats à \(self.player.enemyPlayer!.teamMate[hero - 1].name)")
+                            self.player.enemyPlayer!.teamMate[hero - 1].life -= self.activeWeapon.first!.value
+                            print("\nVous avez enlever \(self.activeWeapon.first!.value) points de dégats à \(self.player.enemyPlayer!.teamMate[hero - 1].name)")
                             if self.player.enemyPlayer!.teamMate[hero - 1].life <= 0 {
                                 print("\(self.player.enemyPlayer!.teamMate[hero - 1].name) est mort")
                                 self.player.enemyPlayer!.teamMate.remove(at: hero - 1)
