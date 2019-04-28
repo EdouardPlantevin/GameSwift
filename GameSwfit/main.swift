@@ -11,6 +11,9 @@ import Foundation
 // Array containt names players and heros to know if it's already used
 var arrayNames = [String]()
 
+// init text of the game
+var suspense = Suspense()
+
 // Create player
 var player1 = Player()
 var player2 = Player()

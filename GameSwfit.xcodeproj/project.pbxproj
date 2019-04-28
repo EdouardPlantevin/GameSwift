@@ -14,6 +14,7 @@
 		7A6928EE22747A510042AB91 /* Mage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6928ED22747A510042AB91 /* Mage.swift */; };
 		7A6928F022747A630042AB91 /* Giant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6928EF22747A630042AB91 /* Giant.swift */; };
 		7A6928F222747A790042AB91 /* Dwarf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6928F122747A790042AB91 /* Dwarf.swift */; };
+		7A6928F622764F360042AB91 /* Suspense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6928F522764F360042AB91 /* Suspense.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,11 +33,12 @@
 		7A6928DB227472370042AB91 /* GameSwfit */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GameSwfit; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A6928DE227472370042AB91 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		7A6928E5227472FB0042AB91 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		7A6928E92274782D0042AB91 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
+		7A6928E92274782D0042AB91 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7A6928EB22747A340042AB91 /* Fighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fighter.swift; sourceTree = "<group>"; };
 		7A6928ED22747A510042AB91 /* Mage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mage.swift; sourceTree = "<group>"; };
 		7A6928EF22747A630042AB91 /* Giant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Giant.swift; sourceTree = "<group>"; };
 		7A6928F122747A790042AB91 /* Dwarf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dwarf.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		7A6928F522764F360042AB91 /* Suspense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suspense.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				7A6928E92274782D0042AB91 /* Hero.swift */,
+				7A6928F522764F360042AB91 /* Suspense.swift */,
 				7A6928EB22747A340042AB91 /* Fighter.swift */,
 				7A6928ED22747A510042AB91 /* Mage.swift */,
 				7A6928EF22747A630042AB91 /* Giant.swift */,
@@ -139,6 +142,7 @@
 			files = (
 				7A6928EE22747A510042AB91 /* Mage.swift in Sources */,
 				7A6928F022747A630042AB91 /* Giant.swift in Sources */,
+				7A6928F622764F360042AB91 /* Suspense.swift in Sources */,
 				7A6928E6227472FB0042AB91 /* Player.swift in Sources */,
 				7A6928EC22747A340042AB91 /* Fighter.swift in Sources */,
 				7A6928DF227472370042AB91 /* main.swift in Sources */,

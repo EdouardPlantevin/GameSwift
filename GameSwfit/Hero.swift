@@ -34,6 +34,7 @@ class Hero {
     /* ------- Choose which hero will fight/heal ------- */
     func choiceHero() {
         print("\n\(self.player.name) avec qui souhaite tu jouer ?\n")
+        suspense.pause() // Stop 1 sec
         // Show hero's team mate
         var i = 1
         for hero in self.player.teamMate {
@@ -64,7 +65,8 @@ class Hero {
         
         // If Ramdom == 1 Hero can choose an other weapon
         if appears == 1 {
-            print("Un coffre apparaît\n")
+            suspense.suspense()
+            print("\nUn coffre apparaît\n")
             // Info on active weapon
             print("\(self.name) est actuellement équipe de: \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value) points de " + (isHealer ? "vie" : "degat") + "\n")
             print("Souhaite tu changer d'arme ?\n1: Oui\n2: Non\n")
@@ -79,10 +81,9 @@ class Hero {
                     let weaponStuff = Array(weapons)[index].value
                     // add actif weapon
                     self.activeWeapon[weaponName] = weaponStuff
-                    
+                    suspense.suspense()
                     // Info stuff
                     print("\(self.name) est actuellement équipe de: \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value)\n")
-                    
                     attak()
                 case "2": // Don't change weapon
                     print("\nBien à l'attaque alors\n")
@@ -103,7 +104,9 @@ class Hero {
     /* ------------- ATTAK ------------- */
     
     func attak() {
+        suspense.pause() // Stop 1 sec
         print((isHealer ? "Qui va tu soigné ?"  : "Qui va tu attaquer ?") + "\n")
+        suspense.pause() // Stop 1 sec
             var i = 1
             // Show each team mate(heal) or each enemy team mate(attak)
             for hero in (isHealer ? self.player.teamMate : self.player.enemyPlayer!.teamMate) { // List hero's enemy
@@ -114,6 +117,7 @@ class Hero {
             if let choice = readLine() {
                 if let index = Int(choice) {
                     if index <= (isHealer ? self.player.teamMate.count : self.player.enemyPlayer!.teamMate.count) && index != 0 {
+                        suspense.suspense()
                         if isHealer {
                             // var containt hero to heal
                             let heroSelect = self.player.teamMate[index - 1]
@@ -152,6 +156,7 @@ class Hero {
                 }
             }
         // Should continue game ?
+        suspense.pause() // Stop 1 sec
         self.player.keepOn()
     }
 }
