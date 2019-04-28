@@ -11,10 +11,12 @@ import Foundation
 class Player {
     
     var name: String = ""
-    var enemyPlayer: Player?
-    var teamMate: Array<Hero> = []
+    var enemyPlayer: Player? // Optional, The first player can not have an enemy
+    var teamMate: Array<Hero> = [] // Array containt 3 heros
     
     
+    
+    // Get name of the player
     func getPlayerName() {
         if arrayNames.count == 0 {
             print("Tu sera le premier joueur, quel est ton nom ?\n")
@@ -37,6 +39,8 @@ class Player {
         }
     }
     
+    
+    // The Player chooses which hero to play
     func createTeam(player: Player) {
         //Stop when we create 3 Heros
         var i = 0
@@ -102,6 +106,8 @@ class Player {
         }
     }
     
+    
+    // If a player no longer has a hero ... this is the end
     func keepOn() {
         if self.enemyPlayer!.teamMate.count == 0 {
             print("Bien joué, \(self.name) à gagner")

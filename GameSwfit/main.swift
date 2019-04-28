@@ -8,7 +8,7 @@
 
 import Foundation
 
-// Array containt names players to know if it's already used
+// Array containt names players and heros to know if it's already used
 var arrayNames = [String]()
 
 // Create player

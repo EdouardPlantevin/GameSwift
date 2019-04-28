@@ -12,11 +12,11 @@ class Hero {
     var name: String
     var player: Player
     var life: Int
-    var maxLife: Int
+    var maxLife: Int // healer can not heal more than maxLife
     var stuff: Int
     var race: String
-    var weapons: [String:Int]
-    var activeWeapon: [String:Int]
+    var weapons: [String:Int] // Dict contains all the weapons of a race
+    var activeWeapon: [String:Int] // Dict contains only one weapon
     var isHealer: Bool
     
     init(name: String, player: Player) {
@@ -33,7 +33,7 @@ class Hero {
     
     
     
-    // witch hero will attak
+    /* ------- Choose which hero will fight/heal ------- */
     func choiceHero() {
         print("\n\(self.player.name) avec qui souhaite tu jouer ?\n")
         var i = 1
@@ -56,6 +56,8 @@ class Hero {
         }
     }
     
+    /* ----------- Choice a weapon ---------- */
+    
     func choiceWeapon() {
         if self.activeWeapon == [:] { // If hero doesn't have any weapon
             print("\n\(self.name) ouvre un coffre\n")
@@ -66,8 +68,8 @@ class Hero {
             self.activeWeapon[weaponName] = weaponStuff
             print("\(self.name) est actuellement équipe de:  \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value)\n")
             attak()
-        } else {
-            print("\(self.name) est actuellement équipe de:  \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value)\n")
+        } else { // Hero's weapon info
+            print("\(self.name) est actuellement équipe de:  \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value) points de " + (isHealer ? "vie" : "degat") +"\n")
             print("Souhaite tu changer d'arme ?\n1: Oui\n2: Non\n")
             
             if let choice = readLine() {
@@ -94,14 +96,12 @@ class Hero {
                 }
             }
         }
-        
-        
     }
     
     
+    /* ------------- ATTAK ------------- */
     
     func attak() {
-    // ------- ATTAK -------
         print((isHealer ? "Qui va tu soigné ?"  : "Qui va tu attaquer ?") + "\n")
             var i = 1
         for hero in (isHealer ? self.player.teamMate : self.player.enemyPlayer!.teamMate) { // List hero's enemy
@@ -145,5 +145,4 @@ class Hero {
             }
         self.player.keepOn()
     }
-    
 }
