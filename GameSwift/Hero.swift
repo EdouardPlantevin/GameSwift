@@ -144,7 +144,8 @@ class Hero {
                                  self.player.enemyPlayer!.teamMate.remove(at: index - 1)
                             }
                         }
-                    } else if index == (isHealer ? self.player.teamMate.count + 1 : self.player.enemyPlayer!.teamMate.count + 1) {
+                    } // if player want to change Hero
+                    else if index == (isHealer ? self.player.teamMate.count + 1 : self.player.enemyPlayer!.teamMate.count + 1) {
                         choiceHero()
                     } else {
                         print("Hum hum tu devais écrire un chiffre ex: 1\n")
