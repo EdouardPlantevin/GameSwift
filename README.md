@@ -13,7 +13,6 @@ $ cd where/the/file/is/downloaded
 $ unzip GameSwift
 $ cd GameSwift-master 
 $ open GameSwift.xcodeproj
-
 ``` 
 
 ### Rules 
