@@ -30,7 +30,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7A6928DB227472370042AB91 /* GameSwfit */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GameSwfit; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A6928DB227472370042AB91 /* GameSwift */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GameSwift; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A6928DE227472370042AB91 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		7A6928E5227472FB0042AB91 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		7A6928E92274782D0042AB91 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -55,7 +55,7 @@
 		7A6928D2227472370042AB91 = {
 			isa = PBXGroup;
 			children = (
-				7A6928DD227472370042AB91 /* GameSwfit */,
+				7A6928DD227472370042AB91 /* GameSwift */,
 				7A6928DC227472370042AB91 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,12 +63,12 @@
 		7A6928DC227472370042AB91 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7A6928DB227472370042AB91 /* GameSwfit */,
+				7A6928DB227472370042AB91 /* GameSwift */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7A6928DD227472370042AB91 /* GameSwfit */ = {
+		7A6928DD227472370042AB91 /* GameSwift */ = {
 			isa = PBXGroup;
 			children = (
 				7A6928E92274782D0042AB91 /* Hero.swift */,
@@ -80,15 +80,15 @@
 				7A6928E5227472FB0042AB91 /* Player.swift */,
 				7A6928DE227472370042AB91 /* main.swift */,
 			);
-			path = GameSwfit;
+			path = GameSwift;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7A6928DA227472370042AB91 /* GameSwfit */ = {
+		7A6928DA227472370042AB91 /* GameSwift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7A6928E2227472370042AB91 /* Build configuration list for PBXNativeTarget "GameSwfit" */;
+			buildConfigurationList = 7A6928E2227472370042AB91 /* Build configuration list for PBXNativeTarget "GameSwift" */;
 			buildPhases = (
 				7A6928D7227472370042AB91 /* Sources */,
 				7A6928D8227472370042AB91 /* Frameworks */,
@@ -98,9 +98,9 @@
 			);
 			dependencies = (
 			);
-			name = GameSwfit;
+			name = GameSwift;
 			productName = GameSwfit;
-			productReference = 7A6928DB227472370042AB91 /* GameSwfit */;
+			productReference = 7A6928DB227472370042AB91 /* GameSwift */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -118,7 +118,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7A6928D6227472370042AB91 /* Build configuration list for PBXProject "GameSwfit" */;
+			buildConfigurationList = 7A6928D6227472370042AB91 /* Build configuration list for PBXProject "GameSwift" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -130,7 +130,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7A6928DA227472370042AB91 /* GameSwfit */,
+				7A6928DA227472370042AB91 /* GameSwift */,
 			);
 		};
 /* End PBXProject section */
@@ -292,7 +292,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7A6928D6227472370042AB91 /* Build configuration list for PBXProject "GameSwfit" */ = {
+		7A6928D6227472370042AB91 /* Build configuration list for PBXProject "GameSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7A6928E0227472370042AB91 /* Debug */,
@@ -301,7 +301,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7A6928E2227472370042AB91 /* Build configuration list for PBXNativeTarget "GameSwfit" */ = {
+		7A6928E2227472370042AB91 /* Build configuration list for PBXNativeTarget "GameSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7A6928E3227472370042AB91 /* Debug */,
