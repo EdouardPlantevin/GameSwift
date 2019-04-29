@@ -68,7 +68,7 @@ class Hero {
             suspense.suspense()
             print("\nUn coffre apparaît\n")
             // Info on active weapon
-            print("\(self.name) est actuellement équipe de: \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value) points de " + (isHealer ? "vie" : "degat") + "\n")
+            print("\(self.name) est actuellement équipé de: \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value) points de " + (isHealer ? "vie" : "degat") + "\n")
             print("Souhaite tu changer d'arme ?\n1: Oui\n2: Non\n")
             
             if let choice = readLine() {
@@ -83,7 +83,7 @@ class Hero {
                     self.activeWeapon[weaponName] = weaponStuff
                     suspense.suspense()
                     // Info stuff
-                    print("\(self.name) est actuellement équipe de: \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value)\n")
+                    print("\(self.name) est actuellement équipé de: \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value)\n")
                     attak()
                 case "2": // Don't change weapon
                     print("\nBien à l'attaque alors\n")
@@ -95,7 +95,7 @@ class Hero {
             }
         } else {
             // Info on active weapon
-            print("\(self.name) est actuellement équipe de: \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value) points de " + (isHealer ? "vie" : "degat") + "\n")
+            print("\(self.name) est actuellement équipé de: \(self.activeWeapon.first!.key) qui " + (isHealer ? "rend" : "inflige" )  + " \(self.activeWeapon.first!.value) points de " + (isHealer ? "vie" : "degat") + "\n")
             attak()
         }
     }
@@ -124,13 +124,13 @@ class Hero {
                             // condition to know if we sould heal him or if is already full life
                             if heroSelect.life + self.activeWeapon.first!.value <= heroSelect.maxLife {
                                 heroSelect.life += self.activeWeapon.first!.value
-                                print("\nVous avez soignée \(heroSelect.name)(\(heroSelect.life) points de vie)")
+                                print("\nVous avez soigner \(heroSelect.name)(\(heroSelect.life) points de vie)")
                             } else if heroSelect.life == heroSelect.maxLife {
                                 print("\(heroSelect.name) est déjà full vie")
                                 attak()
                             } else {
                                 heroSelect.life = heroSelect.maxLife
-                                print("\nVous avez soignée \(heroSelect.name)(\(heroSelect.life) points de vie, full life ;))")
+                                print("\nVous avez soigner \(heroSelect.name)(\(heroSelect.life) points de vie, full life ;))")
                             }
                         } else {
                             // var containt hero to attak

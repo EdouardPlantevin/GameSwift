@@ -14,8 +14,8 @@ class Mage : Hero {
     
     override init(name: String, player: Player) {
         super.init(name: name, player: player)
-        super.life = 50
-        super.maxLife = 50
+        super.life = 70
+        super.maxLife = 70
         super.race = "Mage"
         super.weapons = ["Bâton" : 10, "Sceptre" : 15, "Grimoire" : 20]
         super.activeWeapon = ["Bâton" : 10]

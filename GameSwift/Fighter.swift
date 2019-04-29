@@ -14,7 +14,7 @@ class Fighter : Hero {
     
     override init(name: String, player: Player) {
         super.init(name: name, player: player)
-        super.life = 10
+        super.life = 100
         super.maxLife = 10
         super.race = "Combattant"
         super.weapons = ["Epée à une main" : 15, "Cimeterre" : 20, "Epée à deux main" : 25]

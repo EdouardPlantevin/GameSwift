@@ -14,8 +14,8 @@ class Giant : Hero {
     
     override init(name: String, player: Player) {
         super.init(name: name, player: player)
-        super.life = 200
-        super.maxLife = 200
+        super.life = 130
+        super.maxLife = 130
         super.race = "Colosse"
         super.weapons = ["Ecu" : 5, "Gants" : 10, "Massue" : 15]
         super.activeWeapon = ["Ecu" : 5]
