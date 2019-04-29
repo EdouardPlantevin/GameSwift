@@ -15,7 +15,7 @@ $ cd GameSwift-master
 $ open GameSwift.xcodeproj
 ``` 
 
-### Rules 
+## Rules 
 
 You will create a team of 3 heros and make them fight against your opponent
 
@@ -38,7 +38,7 @@ Sometimes a weapon chest appears to change weapons on a hero, you can choose to 
 
 When a player eliminates all the team of his opponent the game ends with the number of turn to play
 
-#### Thanks 
+### Thanks 
 
 
 I hope my little game will entertain you for a moment
