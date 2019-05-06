@@ -10,7 +10,7 @@ import Foundation
 
 class Restart {
     
-    func restartGame() {
+    static func restartGame() {
         print("\nRelancer une nouvelle partie ?\n1: Oui\n2: Non")
         
         if let choice = readLine() {

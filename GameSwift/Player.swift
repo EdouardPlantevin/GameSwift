@@ -129,7 +129,7 @@ class Player {
             // Counter
             print("\nLa partie c'est dérouler en \(counter) tours")
  
-            restart.restartGame()
+            Restart.restartGame()
         }
     }
     

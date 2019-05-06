@@ -12,7 +12,7 @@ import Foundation
 class Suspense {
     
     // Use for make suspense
-    func suspense() {
+    static func suspense() {
         var i = 0
         while i != 2 {
             print(".")
@@ -22,7 +22,7 @@ class Suspense {
     }
     
     // Stop for 1s
-    func pause() {
+    static func pause() {
         sleep(1)
     }
 }
