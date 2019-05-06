@@ -13,6 +13,8 @@ class Player {
     var name: String = ""
     var enemyPlayer: Player? // Optional, The first player can not have an enemy
     var teamMate: Array<Hero> = [] // Array containt 3 heros
+    var allDamage: Int = 0
+    var allHeal: Int = 0
     
     
     
@@ -110,8 +112,24 @@ class Player {
     // If a player no longer has a hero ... this is the end
     func keepOn() {
         if self.enemyPlayer!.teamMate.count == 0 {
-            print("Bien joué, \(self.name) à gagner en \(counter) tours")
-            exit(0)
+            print("\nBien joué, \(self.name) à gagné\n")
+            print("Voici les stats de la parie\n")
+            // Stats winner Player
+            print("> \(self.name) à enlever \(self.allDamage) points de vie")
+            if self.allHeal > 0 {
+                print("et soigné \(allHeal) points de vie")
+            }
+            
+            // Stats loser Player
+            print("\n> \(self.enemyPlayer!.name) à enlever \(self.enemyPlayer!.allDamage) points de vie")
+            if self.enemyPlayer!.allHeal > 0 {
+                print("et soigné \(self.enemyPlayer!.allHeal) points de vie")
+            }
+            
+            // Counter
+            print("\nLa partie c'est dérouler en \(counter) tours")
+ 
+            restart.restartGame()
         }
     }
     

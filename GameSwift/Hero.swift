@@ -58,7 +58,7 @@ class Hero {
     
     /* ----------- Choice a weapon ---------- */
     
-    func choiceWeapon() {
+    private func choiceWeapon() {
         
         // Random Int to know if a weapon chest appears
         let appears = Int.random(in: 1..<5)
@@ -103,7 +103,7 @@ class Hero {
     
     /* ------------- ATTAK ------------- */
     
-    func attak() {
+    private func attak() {
         suspense.pause() // Stop 1 sec
         print((isHealer ? "Qui va tu soigné ?"  : "Qui va tu attaquer ?") + "\n")
         suspense.pause() // Stop 1 sec
@@ -124,11 +124,14 @@ class Hero {
                             // condition to know if we sould heal him or if is already full life
                             if heroSelect.life + self.activeWeapon.first!.value <= heroSelect.maxLife {
                                 heroSelect.life += self.activeWeapon.first!.value
+                                self.player.allHeal += self.activeWeapon.first!.value // Stats for all heal in the game
                                 print("\nVous avez soigner \(heroSelect.name)(\(heroSelect.life) points de vie)")
                             } else if heroSelect.life == heroSelect.maxLife {
                                 print("\(heroSelect.name) est déjà full vie")
                                 attak()
                             } else {
+                                self.player.allHeal += heroSelect.maxLife - heroSelect.life // Stats for all heal in the game
+                                self.player.allHeal += self.activeWeapon.first!.value
                                 heroSelect.life = heroSelect.maxLife
                                 print("\nVous avez soigner \(heroSelect.name)(\(heroSelect.life) points de vie, full life ;))")
                             }
@@ -136,6 +139,7 @@ class Hero {
                             // var containt hero to attak
                             let heroEnemySelect = self.player.enemyPlayer!.teamMate[index - 1]
                             heroEnemySelect.life -= self.activeWeapon.first!.value
+                            self.player.allDamage += self.activeWeapon.first!.value // Stats for all damage in the game
                             print("\nVous avez enlever \(self.activeWeapon.first!.value) points de dégats à \(heroEnemySelect.name)")
                             // If hero enemy are dead he leave the game
                             if heroEnemySelect.life <= 0 {
