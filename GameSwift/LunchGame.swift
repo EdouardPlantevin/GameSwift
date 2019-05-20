@@ -29,10 +29,10 @@ class LunchGame {
                 print("\n")
                 lunchGame()
             case "2":
-                print("\n1: Le combattant possède 100 points de vie est commence la partie avec une arme qui afflige 15 de dégats\n2: Le mage est un soigneur qui possède 70 points de vie et soigne 10 points de dégats avec son arme de base\n3: Le colosse est un mastodonte qui possède 130 points de vie et inglige 5 points de dégats\n4: Le nain est un redoutable guerrier qui possède 60 points de vie et inflige 20 points de dégats avec son arme de base")
+                print("\n1: Le combattant possède 100 points de vie est commence la partie avec une arme qui inflige 15 de dégats\n2: Le mage est un soigneur qui possède 70 points de vie et soigne 10 points de dégats avec son arme de base\n3: Le colosse est un mastodonte qui possède 130 points de vie et inflige 5 points de dégats\n4: Le nain est un redoutable guerrier qui possède 60 points de vie et inflige 20 points de dégats avec son arme de base")
                 menu()
             case "3":
-                print("Vous allez créer chacun trois heros pour combattre à vos côté, le but du jeu est de tuer touts les heros adverse, une fois cette objectif atteint la partie ce termine")
+                print("Vous allez créer chacun trois heros pour combattre à vos côté, le but du jeu est de tuer tous les heros adverses, une fois cette objectif atteint la partie se termine")
                 menu()
             case "4":
                 exit(0)

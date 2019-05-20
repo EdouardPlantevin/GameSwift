@@ -45,8 +45,8 @@ class Player {
     // The Player chooses which hero to play
     func createTeam(player: Player) {
         //Stop when we create 3 Heros
-        var i = 0
-        while i != 3 {
+        var nbOfHero = 0
+        while nbOfHero != 3 {
             print("Choisi un Hero")
             print("\n1: Combattant\n2: Mage\n3: Colosse\n4: Nain\n")
             if let answer = readLine() {
@@ -58,7 +58,7 @@ class Player {
                             teamMate.append(Fighter(name: name, player: player))
                             arrayNames.append(name)
                             print("\n\(name) le Combattant à été créer\n")
-                            i += 1
+                            nbOfHero += 1
                         } else {
                             print("\nCe nom est déjà utiliser\n")
                         }
@@ -71,7 +71,7 @@ class Player {
                             teamMate.append(Mage(name: name, player: player))
                             arrayNames.append(name)
                             print("\n\(name) le Mage à été créer\n")
-                            i += 1
+                            nbOfHero += 1
                         } else {
                             print("\nCe nom est déjà utiliser\n")
                         }
@@ -84,7 +84,7 @@ class Player {
                             teamMate.append(Giant(name: name, player: player))
                             arrayNames.append(name)
                             print("\n\(name) le Colosse à été créer\n")
-                            i += 1
+                            nbOfHero += 1
                         } else {
                             print("\nCe nom est déjà utiliser\n")
                         }
@@ -96,7 +96,7 @@ class Player {
                             teamMate.append(Dwarf(name: name, player: player))
                             arrayNames.append(name)
                             print("\n\(name) le Nain à été créer\n")
-                            i += 1
+                            nbOfHero += 1
                         } else {
                             print("\nCe nom est déjà utiliser\n")
                         }
@@ -114,6 +114,7 @@ class Player {
         if self.enemyPlayer!.teamMate.count == 0 {
             print("\nBien joué, \(self.name) à gagné\n")
             print("Voici les stats de la parie\n")
+            
             // Stats winner Player
             print("> \(self.name) à enlever \(self.allDamage) points de vie")
             if self.allHeal > 0 {
